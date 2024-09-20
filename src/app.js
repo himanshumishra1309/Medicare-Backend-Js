@@ -18,6 +18,9 @@ app.use(express.static("public"));
 //this is used to store the public assets in the server, public is the name of the folder
 app.use(cookieParser())
 
+app.get('/', (req, res) => {
+    res.send('Server is running!');
+});
 
 //importing routes
 import studentRouter from './routes/student.routes.js'
