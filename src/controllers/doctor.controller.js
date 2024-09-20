@@ -78,6 +78,7 @@ const registerUser = asyncHandler(async (req,res) => {
     const options = {
       httpOnly: true,
       secure: true,
+      sameSite: 'None',
     }
 
     return res
@@ -132,6 +133,7 @@ const loginUser = asyncHandler(async(req, res)=>{
     const options = {
       httpOnly: true,
       secure: true,
+      sameSite: 'None',
     }
 
     // cookie("accessToken", accessToken, options) this is the way of generating 
