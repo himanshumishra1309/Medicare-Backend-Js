@@ -80,6 +80,7 @@ const registerUser = asyncHandler(async (req,res) => {
     const options = {
       httpOnly: true,
       secure: true,
+      sameSite: 'None',
     }
 
     return res
@@ -87,7 +88,12 @@ const registerUser = asyncHandler(async (req,res) => {
     .cookie("studentAccessToken", accessToken, options)
     .cookie("studentRefreshToken", refreshToken, options)
     .json(
-        new ApiResponse(200, createdUser, "User Registered Successfully")
+        new ApiResponse(200, 
+          {
+            user: createdUser,
+            accessToken: accessToken
+          }
+          , "User Registered Successfully")
     )
 }) //worked on postman
 //note: dont upload the previous file kept in postman to check you application, that gives internal server error, fix that if possible
